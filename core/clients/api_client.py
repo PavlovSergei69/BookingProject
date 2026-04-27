@@ -1,5 +1,3 @@
-from http.client import responses
-
 import requests
 import os
 from dotenv import load_dotenv
@@ -74,18 +72,18 @@ class APIClient:
         with allure.step('Checking status code'):
             assert response.status_code == 200, f"Expected status 200 but got {response.status_code}"
             token = response.json().get("token")
-            with allure.step('Updating header with authorization'):
-                #Обновление заголовка с авторизацией
-                self.session.headers.update({"Authorization": f"Bearer {token}"})
+        with allure.step('Updating header with authorization'):
+            #Обновление заголовка с авторизацией
+            self.session.headers.update({"Authorization": f"Bearer {token}"})
 
     def get_booking_by_id (self, booking_id):
         with allure.step('Getting the id of  booking'):
             url = f"{self.base_url}{Endpoints.BOOKING_ENDPOINT}/{booking_id}"
             response = self.session.get(url)
             response.raise_for_status()
-            with allure.step('Checking status code'):
-                assert response.status_code == 200, f"Expected status 200 but got {response.status_code}"
-                return response.json()
+        with allure.step('Checking status code'):
+            assert response.status_code == 200, f"Expected status 200 but got {response.status_code}"
+            return response.json()
 
 
 
