@@ -73,7 +73,6 @@ def test_create_booking_with_empty_json(api_client):
     with pytest.raises(HTTPError):
         booking_data = {}
         response = api_client.create_booking(booking_data)
-        return response
 
 
 @allure.feature('Test creating booking')

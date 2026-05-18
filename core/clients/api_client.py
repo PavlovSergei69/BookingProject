@@ -24,11 +24,6 @@ class APIClient:
 
         self.base_url = self.get_base_url(environment)
         self.session = requests.Session()
-        #Настраивает сессию так, чтобы все её HTTP‑запросы содержали заголовок Content-Type: application/json
-        #self.session.headers = {
-        #     'Content-Type':'application/json'
-        #}
-        #в 6 лекции удалил
 
     def get_base_url(self, environment: Environment) -> str:
         # str возвращает значение в строке
